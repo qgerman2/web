@@ -3,72 +3,51 @@
 
 <head>
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Scrollama: Sticky Side Example</title>
 	<meta name="description" content="Scrollama: Sticky Side Example" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" href="scrolly.css" />
+	<script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/"></script>
+	<script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+	<script src="https://unpkg.com/scrollama"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="script.js"></script>
 </head>
 
 <body>
-	<link href="layout.html" rel="import">
-
-	<script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/"></script>
-	<script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
-	<script src="scrollama.min.js"></script>
-	<script>
-		var main = d3.select("main");
-		var scrolly = main.select("#scrolly");
-		var figure = scrolly.select("figure");
-		var article = scrolly.select("article");
-		var step = article.selectAll(".step");
-
-		var scroller = scrollama();
-
-		// generic window resize listener event
-		function handleResize() {
-            console.log("reisze")
-			// 1. update height of step elements
-			var stepH = Math.floor(window.innerHeight * 0.75);
-			step.style("height", stepH + "px");
-
-			var figureHeight = window.innerHeight / 2;
-			var figureMarginTop = (window.innerHeight - figureHeight) / 2;
-
-			figure
-				.style("height", figureHeight + "px")
-				.style("top", figureMarginTop + "px");
-
-			// 3. tell scrollama to update new element dimensions
-			scroller.resize();
-		}
-
-		// scrollama event handlers
-		function handleStepEnter(response) {
-			console.log(response);
-
-			step.classed("is-active", function (d, i) {
-				return i === response.index;
-			});
-
-			figure.select("p").text(response.index + "miau");
-		}
-
-		function init() {
-			handleResize();
-			scroller
-				.setup({
-					step: "#scrolly article .step",
-					offset: 0.33,
-					debug: false
-				})
-				.onStepEnter(handleStepEnter);
-		}
-
-        window.addEventListener("resize", handleResize);
-		init();
-	</script>
+	<main>
+		<section id="intro">
+			<h1 class="intro__hed">Sticky Side Example</h1>
+			<p class="intro__dek">
+				Start scrolling to see how it works.
+			</p>
+		</section>
+	
+		<section id="scrolly">
+			<article>
+				<div class="step" data-step="1">
+					<p>STEP 111132131</p>
+				</div>
+				<div class="step" data-step="2">
+					<p>STEP 2444</p>
+				</div>
+				<div class="step" data-step="3">
+					<p>STEP 3</p>
+				</div>
+				<div class="step" data-step="4">
+					<p class="">STEP 4</p>
+				</div>
+			</article>
+	
+			<figure>
+				<p>AA</p>
+			</figure>
+		</section>
+	
+		<section id="outro">
+			<p class="text-3xl font-bold underline text-clifford hover:text-blue-400">outro </p>
+		</section>
+	</main>
 </body>
 
 </html>
