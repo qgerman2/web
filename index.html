@@ -2,53 +2,72 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<title>Scrollama: Sticky Side Example</title>
-	<meta name="description" content="Scrollama: Sticky Side Example" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="scrollama.css" />
-	<script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/"></script>
-	<script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
-	<script src="https://unpkg.com/scrollama"></script>
-	<script src="https://cdn.tailwindcss.com"></script>
-	<script src="script.js"></script>
+    <meta charset="utf-8" />
+    <title>titulo humedales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="scrollama-overlay.css" />
+    <link rel="stylesheet" href="scrollama-side.css" />
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/"></script>
+    <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
-	<main>
-		<section id="intro">
-			<h1>LOS DE LA NASA</h1>
-			<p>
-				humedales
-			</p>
-			<img style="height:100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png">
-		</section>
-	
-		<section id="scrolly">
-			<article >
-				<div class="step bg-red-500" data-step="1">
-					<p>STEP 111132131</p>
-				</div>
-				<div class="step bg-red-500 text-center align-middle" data-step="2">
-					<p>STEP 2444</p>
-				</div>
-				<div class="step bg-red-500" data-step="3">
-					<p>STEP 3</p>
-				</div>
-				<div class="step bg-red-500" data-step="4">
-					<p class="">STEP 4</p>
-				</div>
-			</article>
-	
-			<figure>
-				<p>AA</p>
-			</figure>
-		</section>
-	
-		<section id="outro">
-			<p class="text-3xl font-bold underline text-clifford hover:text-blue-400">outro </p>
-		</section>
-	</main>
+    <main>
+        <section id="intro">
+            <h1 class="intro__hed">wetlands project</h1>
+            <p class="intro__dek">
+                por los de la nasa.
+            </p>
+        </section>
+
+        <section class="scrolly" id="scrolly-overlay">
+            <figure>
+                <p>0</p>
+            </figure>
+
+            <article>
+                <div class="step" data-step="1">
+                    <p>STEP 1</p>
+                </div>
+                <div class="step" data-step="2">
+                    <p>STEP 2</p>
+                </div>
+                <div class="step" data-step="3">
+                    <p>STEP 3</p>
+                </div>
+                <div class="step" data-step="4">
+                    <p>STEP 4</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="scrolly" id="scrolly-side">
+            <article>
+                <div class="step" data-step="1">
+                    <p>STEP 1</p>
+                </div>
+                <div class="step" data-step="2">
+                    <p>STEP 2</p>
+                </div>
+                <div class="step" data-step="3">
+                    <p>STEP 3</p>
+                </div>
+                <div class="step" data-step="4">
+                    <p>STEP 4</p>
+                </div>
+            </article>
+
+            <figure>
+                <p>0</p>
+            </figure>
+        </section>
+
+        <section id="outro"></section>
+    </main>
 </body>
 
 </html>
