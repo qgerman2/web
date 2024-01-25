@@ -2,19 +2,24 @@
     position: relative;
     background-color: rgba(243, 243, 243, 0.5);
     padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
     article {
         position: relative;
         padding: 0;
-        max-width: 20rem;
         margin: 0 auto;
     }
 
     figure {
         position: -webkit-sticky;
         position: sticky;
-        left: 0;
+        height: 80vh;
+        top: 10vh;
         width: 100%;
+        max-width: 100vh;
         margin: 0;
         -webkit-transform: translate3d(0, 0, 0);
         -moz-transform: translate3d(0, 0, 0);
@@ -38,9 +43,18 @@
     }
 
     .step {
-        margin: 0 auto 2rem auto;
-        color: #fff;
-        background-color: rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        padding-bottom: 50vh;
+
+        >div {
+            text-align: justify;
+            margin-inline: auto;
+            background-color: white;
+            border-style: solid;
+            border-color: lightslategray;
+            border-width: 1px;
+            padding: 0.5cm;
+        }
     }
 
     .step:last-child {
@@ -52,10 +66,9 @@
         color: #3b3b3b;
     }
 
-    .step p {
+    .step h1,
+    h2 {
+        margin: 0.4cm;
         text-align: center;
-        padding: 1rem;
-        font-size: 1.5rem;
-        background-color: #3b3b3b;
     }
 }
