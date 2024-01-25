@@ -37,7 +37,8 @@
     padding: 0.5cm;
     margin-bottom: 20vh;
 
-    h1 {
+    h1,
+    h2 {
         text-align: center;
     }
 
@@ -65,6 +66,7 @@
         border-width: 1px;
         border-color: black;
         background-color: black;
+        position: relative;
 
         >svg {
             aspect-ratio: 1;
