@@ -13,6 +13,11 @@ addEventListener("load", () => {
     var scroller1 = scrollama();
     var scroller2 = scrollama();
 
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+
+
     function handleResize() {
         var stepH = Math.floor(window.innerHeight * 0.75);
         step1.style("height", stepH + "px");
@@ -30,6 +35,11 @@ addEventListener("load", () => {
 
         scroller1.resize();
         scroller2.resize();
+
+        ctx.moveTo(0, 0);
+        ctx.canvas.width = document.body.clientWidth;
+        ctx.canvas.height = window.innerHeight;
+
     }
 
     function handleStepEnter1(response) {
@@ -67,4 +77,6 @@ addEventListener("load", () => {
             .onStepEnter(handleStepEnter2);
     }
     init();
+    addEventListener("resize", handleResize);
 })
+

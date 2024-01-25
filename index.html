@@ -12,15 +12,36 @@
     <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
     <script src="script.js"></script>
 </head>
 
 <body>
+    <canvas id="myCanvas" width="200" height="200" style="
+        background-color: red;
+        position: fixed;
+        z-index: -1;
+        "></canvas>
     <main>
-        <section id="intro">
-            <h1 class="intro__hed">wetlands project</h1>
-            <p class="intro__dek">
+        <section id="portada">
+            <h1 class="text-4xl text-gray-800 font-serif">wetlands project</h1>
+            <p class="text-xl text-gray-400">
                 por los de la nasa.
+            </p>
+        </section>
+
+        <section id="intro" class="font-serif text-2xl tracking-wide">
+            <h1 class="font-bold">wetlands??</h1>
+            <p>
+                Wetlands provide habitat for thousands of species of aquatic and terrestrial plants and animals.
+                Wetlands are valuable for flood protection, water quality improvement, shoreline erosion control,
+                natural products, recreation, and aesthetics.
+                <br><br><br>
+                Wetlands are among the most productive habitats on earth providing shelter and nursery areas for
+                commercially and recreationally important animals like fish and shellfish, as well as wintering grounds
+                for migrating birds. Coastal marshes are particularly valuable for preventing loss of life and property
+                by moderating extreme floods and buffering the land from storms; they also form natural reservoirs and
+                help maintain desirable water quality.
             </p>
         </section>
 

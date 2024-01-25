@@ -1,6 +1,6 @@
 #scrolly-overlay {
     position: relative;
-    background-color: #f3f3f3;
+    background-color: rgba(243, 243, 243, 0.5);
     padding: 1rem;
 
     article {
@@ -19,7 +19,7 @@
         -webkit-transform: translate3d(0, 0, 0);
         -moz-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
-        background-color: #8a8a8a;
+        background-color: rgba(138, 138, 138, 0.5);
         z-index: 0;
     }
 
