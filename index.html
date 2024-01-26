@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 
+<div style="display:none;">
+    <img id="conce_landsat" src="conce_landsat7.PNG"/>
+</div>
+
 <head>
     <meta charset="utf-8" />
     <title>Urban Develpoment vs. The Wetlands in Hualpén</title>
@@ -16,6 +20,7 @@
     <script src="https://kit.fontawesome.com/c576840504.js" crossorigin="anonymous"></script>
     <script src="worldmap.js"></script>
     <script src="scrollama.js"></script>
+    <script src="slideshow.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"
         integrity="sha512-4UKI/XKm3xrvJ6pZS5oTRvIQGIzZFoXR71rRBb1y2N+PbwAsKa5tPl2J6WvbEvwN3TxQCm8hMzsl/pO+82iRlg=="
@@ -260,7 +265,8 @@
         <article>
             <div class="step">
                 <div class="font-serif text-sm shadow-lg">
-                    LANDSAT 
+                    Thanks to satellite images, the changes that occur in an area and its wetlands can be tracked in order to obtain quantitative results. These have proven to be a really good resource to determine a wetland overall healthiness which in turn leads to action being taken more quickly.<br><br>
+                    Over other free resources, the LANDSAT 7 images are a nice option because their resolution is fine enough to distinguish some features of the land and the timespan of its images go all the way back to the 2000s, this enables the analysis of how things were doing 20 years ago compared to now.
                 </div>
             </div>
             <div class="step">
@@ -285,8 +291,11 @@
             </div>
         </article>
 
-        <figure>
-            <p>0</p>
+        <figure id="slideshow-container" class="shadow-lg">
+            <canvas id="slideshow">
+
+            </canvas>
+            <p id="legend">LANDSAT 7</p>
         </figure>
     </section>
 

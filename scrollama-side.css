@@ -26,22 +26,22 @@
     }
 
     figure p {
-        text-align: center;
-        padding: 1rem;
+        text-align: right;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        -moz-transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        font-size: 8rem;
-        font-weight: 900;
-        color: #fff;
+        bottom: 10px;
+        right: 10px;
+        background-color: white;
+        padding: 5px;
+        font-size: 1rem;
+        font-style: serif;
+        color: #000;
+        border-color: lightslategray;
+        border-width: 1px;
     }
 
     .step {
         margin: 0 auto 2rem auto;
-
+        min-width: 300px;
         >div {
             text-align: justify;
             margin-inline: auto;
@@ -72,4 +72,11 @@
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
+}
+
+#slideshow-container {
+    background-color: white;
+    border-style: solid;
+    border-color: lightslategray;
+    border-width: 1px;
 }

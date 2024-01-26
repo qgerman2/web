@@ -65,21 +65,25 @@ function init(values) {
         context.beginPath(), path(land), context.fillStyle = "#ccc", context.fill();
         context.beginPath(), path(borders), context.strokeStyle = "#fff", context.lineWidth = 0.5, context.stroke();
         context.beginPath(), path({ type: "Sphere" }), context.strokeStyle = "#000", context.lineWidth = 1.5, context.stroke();
-        context.beginPath(), path(centroids), context.fillStyle = "#FFC0CBFF", context.lineWidth = 0.1, context.fill();
+        if (anim_step == 1) {
+            context.beginPath(), path(centroids), context.fillStyle = "#FFC0CBFF", context.lineWidth = 0.1, context.fill()
+        }
         if (anim_step == 2) {
             context.beginPath();
             path(regiones);
-            context.strokeStyle = "#0005";
+            context.fillStyle = "#cccccc"
+            context.strokeStyle = "#000f";
             context.lineWidth = 0.5;
+            context.fill();
             context.stroke();
         } else if (anim_step == 3) {
             context.beginPath();
             path(conce);
             context.strokeStyle = "#000F";
-            context.fillstyle = "#FFC0CBFF"
+            context.fillStyle = "#cccccc"
             context.lineWidth = 1;
-            context.stroke();
             context.fill();
+            context.stroke();
         }
         if (draw) {
             requestAnimationFrame(renderWorldMap);
