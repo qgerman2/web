@@ -16,6 +16,9 @@ function init(values) {
     var projection;
     var path;
     let rotation = 0;
+    let rotation2 = 0;
+    let base_scale;
+    let scale = 100;
 
 
     let wetlands = values[0];
@@ -31,15 +34,23 @@ function init(values) {
         context.canvas.height = window.innerHeight;
         projection = d3.geoOrthographic().fitExtent([[10, 10], [context.canvas.width - 10, context.canvas.height - 10]], { type: "Sphere" });
         path = d3.geoPath(projection, context);
+        base_scale = projection.scale() * 0.85;
     }
-
     function renderWorldMap() {
         anim_state = anim_state + (anim_step - anim_state) / 50
         let width = context.canvas.width;
         let height = context.canvas.height;
-        rotation = rotation + 0.1;
-        projection.rotate([rotation, 0, 0]);
-        projection.scale(400)
+        if (anim_step != 2) {
+            rotation = rotation - 0.1;
+            rotation2 = rotation2 + (0 - rotation2) / 100;
+            scale = scale + (base_scale - scale) / 50;
+        } else {
+            rotation = rotation + (70 - rotation) / 100;
+            rotation2 = rotation2 + (35 - rotation2) / 100;
+            scale = scale + (base_scale * 3 - scale) / 100;
+        }
+        projection.scale(scale);
+        projection.rotate([rotation, rotation2, 0]);
         context.clearRect(0, 0, width, height);
         context.beginPath(), path(land), context.fillStyle = "#ccc", context.fill();
         context.beginPath(), path(borders), context.strokeStyle = "#fff", context.lineWidth = 0.5, context.stroke();
@@ -53,6 +64,9 @@ function init(values) {
     function stepEnter(response) {
         response = response.detail
         anim_step = response.index + 1;
+        if (response.direction == "down" && anim_step == 1) {
+            scale = 100;
+        }
         stepChanged();
     }
     addEventListener("step-enter", stepEnter);
