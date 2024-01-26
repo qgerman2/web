@@ -1,8 +1,10 @@
 addEventListener("load", () => {
     Promise.all([
         d3.json("ramsar_centroid.json"),
-        d3.json("countries-110m.json")])
-        .then(init)
+        d3.json("countries-110m.json"),
+        d3.json("regiones.json"),
+        d3.json("conce.json")
+    ]).then(init)
 })
 
 function init(values) {
@@ -19,6 +21,8 @@ function init(values) {
     let rotation2 = 0;
     let base_scale;
     let scale = 100;
+    let regiones = topojson.feature(values[2], values[2].objects.regiones3);
+    let conce = topojson.feature(values[3], values[3].objects.conce);
 
 
     let wetlands = values[0];
@@ -40,14 +44,19 @@ function init(values) {
         anim_state = anim_state + (anim_step - anim_state) / 50
         let width = context.canvas.width;
         let height = context.canvas.height;
-        if (anim_step != 2) {
+        if (anim_step < 2) {
             rotation = rotation - 0.1;
+            rotation = rotation % 360;
             rotation2 = rotation2 + (0 - rotation2) / 100;
             scale = scale + (base_scale - scale) / 50;
-        } else {
+        } else if (anim_step == 2) {
             rotation = rotation + (70 - rotation) / 100;
             rotation2 = rotation2 + (35 - rotation2) / 100;
-            scale = scale + (base_scale * 3 - scale) / 100;
+            scale = scale + (base_scale * 3 - scale) / 50;
+        } else if (anim_step == 3) {
+            rotation = rotation + (73 - rotation) / 100;
+            rotation2 = rotation2 + (36.7 - rotation2) / 100;
+            scale = scale + (base_scale * 250 - scale) / 1000;
         }
         projection.scale(scale);
         projection.rotate([rotation, rotation2, 0]);
@@ -55,7 +64,22 @@ function init(values) {
         context.beginPath(), path(land), context.fillStyle = "#ccc", context.fill();
         context.beginPath(), path(borders), context.strokeStyle = "#fff", context.lineWidth = 0.5, context.stroke();
         context.beginPath(), path({ type: "Sphere" }), context.strokeStyle = "#000", context.lineWidth = 1.5, context.stroke();
-        context.beginPath(), path(centroids), context.fillStyle = "#FFC0CBAA", context.lineWidth = 0.1, context.fill();
+        context.beginPath(), path(centroids), context.fillStyle = "#FFC0CBFF", context.lineWidth = 0.1, context.fill();
+        if (anim_step == 2) {
+            context.beginPath();
+            path(regiones);
+            context.strokeStyle = "#0005";
+            context.lineWidth = 0.5;
+            context.stroke();
+        } else if (anim_step == 3) {
+            context.beginPath();
+            path(conce);
+            context.strokeStyle = "#000F";
+            context.fillstyle = "#FFC0CBFF"
+            context.lineWidth = 1;
+            context.stroke();
+            context.fill();
+        }
         requestAnimationFrame(renderWorldMap);
     }
     function stepChanged() {
