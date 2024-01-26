@@ -49,10 +49,11 @@ addEventListener("load", () => {
     function handleStepExit1(response) {
         id = response.detail[1]
         response = response.detail[0]
-        if (response.direction == "up" &&
-            response.index == 0) {
-            bg.transition().duration(500).style('opacity', 1)
-            figure1.transition().duration(500).style('opacity', 0)
+        if (response.direction == "up") {
+            if (id == 1 && response.index == 0) {
+                bg.transition().duration(500).style('opacity', 1)
+                figure1.transition().duration(500).style('opacity', 0)
+            }
         }
     }
     addEventListener("step-exit", handleStepExit1);
