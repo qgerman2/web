@@ -1,6 +1,5 @@
 #scrolly-overlay {
     position: relative;
-    background-color: rgba(243, 243, 243, 0.5);
     padding: 1rem;
     display: flex;
     align-items: center;
@@ -14,18 +13,15 @@
     }
 
     figure {
-        position: -webkit-sticky;
-        position: sticky;
-        height: 80vh;
-        top: 10vh;
+        position: fixed;
+        top: 0px;
+        height: 100%;
         width: 100%;
-        max-width: 100vh;
-        margin: 0;
         -webkit-transform: translate3d(0, 0, 0);
         -moz-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
-        background-color: rgba(138, 138, 138, 0.5);
-        z-index: 0;
+        z-index: -2;
+        opacity: 0;
     }
 
     figure p {
@@ -44,7 +40,7 @@
 
     .step {
         max-width: 400px;
-        padding-bottom: 50vh;
+        padding-bottom: 90vh;
 
         >div {
             text-align: justify;

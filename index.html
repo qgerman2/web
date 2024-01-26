@@ -8,21 +8,28 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="scrollama-overlay.css" />
     <link rel="stylesheet" href="scrollama-side.css" />
+    <script src="versor.js"></script>
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/"></script>
     <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/c576840504.js" crossorigin="anonymous"></script>
+    <script src="worldmap.js"></script>
     <script src="scrollama.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"
+        integrity="sha512-4UKI/XKm3xrvJ6pZS5oTRvIQGIzZFoXR71rRBb1y2N+PbwAsKa5tPl2J6WvbEvwN3TxQCm8hMzsl/pO+82iRlg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
     <img id="bg" src="concepcion4.webp">
     <section id="portada" class="shadow-lg">
-        <h1 class="text-4xl text-gray-800 font-serif">wetlands</h1>
-        <p class="text-xl text-gray-400">
-            por los de la nasa.
+        <h1 class="text-4xl text-gray-800 font-serif text-center">We need to talk about wetlands.</h1>
+        <br>
+        <p class="text-lg text-gray-400 text-center font-serif">
+            A report put together by the <br> All-seeing Earthwatchers Board <br> for the <br> Pale Blue Dot:
+            Visualization Challenge
         </p>
     </section>
 
@@ -243,25 +250,40 @@
         </div>
     </section>
 
-    <section class=" scrolly" id="scrolly-overlay">
+    <section class="scrolly" id="scrolly-overlay" style="padding-top: 80vh">
         <figure>
-            <p>0</p>
+            <canvas id="worldmap">
+
+            </canvas>
         </figure>
 
         <article>
             <div class="step" data-step="1">
-                <div>
-                    Theres like 3 wetlands across the world
+                <div class="shadow-lg">
+                    The world is filled with wetlands.<br><br>
+                    Here are around 2000 of them designated to be of international importance according to the <b>Ramsar
+                        Convention.</b>
+                    <br><br>
+                    These are selected based on criteria such as being essential for the survival of a significant
+                    portion of a species or being a rare kind of wetland specific to its biogeographic region.
                 </div>
             </div>
             <div class="step" data-step="2">
-                <div>2 of them are in hualpen</div>
+                <div class="shadow-lg">
+                    Here is <b>Chile</b>, according to the Ministry for the Environment there are over 40 000 wetlands
+                    across
+                    the Country of which 16 are part of the Ramsar List.
+                </div>
             </div>
             <div class="step" data-step="3">
-                <div>sike</div>
+                <div class="shadow-lg">
+                    sike
+                </div>
             </div>
             <div class="step" data-step="4">
-                <div>STEP 4</div>
+                <div class="shadow-lg">
+                    STEP 4
+                </div>
             </div>
         </article>
     </section>

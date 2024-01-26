@@ -35,16 +35,20 @@ addEventListener("load", () => {
     }
 
     function handleStepEnter1(response) {
+        response = response.detail
         anim_step = response.index + 1;
         step_changed();
     }
+    addEventListener("step-enter", handleStepEnter1);
     function handleStepExit1(response) {
+        response = response.detail
         if (response.index > anim_step) { return }
         if (response.direction == "up") {
             anim_step = response.index;
         }
         step_changed();
     }
+    addEventListener("step-exit", handleStepExit1);
     function handleStepEnter2(response) {
         step2.classed("is-active", function (d, i) {
             return i === response.index;
@@ -58,10 +62,21 @@ addEventListener("load", () => {
             .setup({
                 step: "#scrolly-overlay article .step",
                 offset: 0.9,
-                debug: true,
             })
-            .onStepEnter(handleStepEnter1)
-            .onStepExit(handleStepExit1);
+            .onStepEnter((r) => {
+                dispatchEvent(
+                    new CustomEvent("step-enter", {
+                        detail: r
+                    })
+                )
+            })
+            .onStepExit((r) => {
+                dispatchEvent(
+                    new CustomEvent("step-exit", {
+                        detail: r
+                    })
+                )
+            });
         scroller2
             .setup({
                 step: "#scrolly-side article .step",
@@ -78,8 +93,10 @@ addEventListener("load", () => {
     function step_changed() {
         if (anim_step > 0) {
             bg.transition().duration(500).style('opacity', 0)
+            figure1.transition().duration(2000).style('opacity', 1)
         } else {
             bg.transition().duration(500).style('opacity', 1)
+            figure1.transition().duration(500).style('opacity', 0)
         }
         figure1.select("p").text(anim_step)
     }
