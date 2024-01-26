@@ -38,9 +38,11 @@ addEventListener("load", () => {
         id = response.detail[1]
         response = response.detail[0]
         if (id == 1) {
+            dispatchEvent(new Event("draw-on"));
             bg.transition().duration(500).style('opacity', 0)
             figure1.transition().duration(2000).style('opacity', 1)
         } else {
+            dispatchEvent(new Event("draw-off"));
             bg.transition().duration(500).style('opacity', 1)
             figure1.transition().duration(500).style('opacity', 0)
         }
@@ -92,7 +94,7 @@ addEventListener("load", () => {
         scroller2
             .setup({
                 step: "#scrolly-side article .step",
-                offset: 0.9,
+                offset: 0.8,
                 debug: false
             })
             .onStepEnter((r) => {

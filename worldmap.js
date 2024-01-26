@@ -22,7 +22,8 @@ function init(values) {
     let base_scale;
     let scale = 100;
     let regiones = topojson.feature(values[2], values[2].objects.regiones3);
-    let conce = topojson.feature(values[3], values[3].objects.conce);
+    let conce = topojson.feature(values[3], values[3].objects.conce3);
+    var draw = false
 
 
     let wetlands = values[0];
@@ -80,7 +81,9 @@ function init(values) {
             context.stroke();
             context.fill();
         }
-        requestAnimationFrame(renderWorldMap);
+        if (draw) {
+            requestAnimationFrame(renderWorldMap);
+        }
     }
     function stepEnter(response) {
         if (response.detail[1] == 2) { return }
@@ -100,6 +103,9 @@ function init(values) {
         }
     }
     addEventListener("step-exit", stepExit);
+
+    addEventListener("draw-on", () => { draw = true; requestAnimationFrame(renderWorldMap) })
+    addEventListener("draw-off", () => { draw = false; })
 
     handleResize();
     requestAnimationFrame(renderWorldMap);

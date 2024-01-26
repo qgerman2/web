@@ -1,14 +1,15 @@
 #scrolly-side {
     position: relative;
+    margin: 0 auto;
+    max-width: 1000px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    background-color: #f3f3f3;
     padding: 1rem;
 
     article {
         position: relative;
-        padding: 0 1rem;
+        margin: 0 1rem;
         max-width: 20rem;
     }
 
@@ -40,8 +41,15 @@
 
     .step {
         margin: 0 auto 2rem auto;
-        background-color: #3b3b3b;
-        color: #fff;
+
+        >div {
+            text-align: justify;
+            margin-inline: auto;
+            padding: 0.5cm;
+            background-color: white;
+            border-color: lightslategray;
+            border-width: 1px;
+        }
     }
 
     .step:last-child {
