@@ -54,8 +54,8 @@ function init(values) {
             rotation2 = rotation2 + (35 - rotation2) / 100;
             scale = scale + (base_scale * 3 - scale) / 50;
         } else if (anim_step == 3) {
-            rotation = rotation + (73 - rotation) / 100;
-            rotation2 = rotation2 + (36.7 - rotation2) / 100;
+            rotation = rotation + (73 - rotation) / 10;
+            rotation2 = rotation2 + (36.7 - rotation2) / 10;
             scale = scale + (base_scale * 250 - scale) / 1000;
         }
         projection.scale(scale);
@@ -82,25 +82,22 @@ function init(values) {
         }
         requestAnimationFrame(renderWorldMap);
     }
-    function stepChanged() {
-
-    }
     function stepEnter(response) {
-        response = response.detail
+        if (response.detail[1] == 2) { return }
+        response = response.detail[0]
         anim_step = response.index + 1;
         if (response.direction == "down" && anim_step == 1) {
             scale = 100;
         }
-        stepChanged();
     }
     addEventListener("step-enter", stepEnter);
     function stepExit(response) {
-        response = response.detail
+        if (response.detail[1] == 2) { return }
+        response = response.detail[0]
         if (response.index > anim_step) { return }
         if (response.direction == "up") {
             anim_step = response.index;
         }
-        stepChanged();
     }
     addEventListener("step-exit", stepExit);
 

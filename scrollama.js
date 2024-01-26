@@ -35,25 +35,36 @@ addEventListener("load", () => {
     }
 
     function handleStepEnter1(response) {
-        response = response.detail
-        anim_step = response.index + 1;
-        step_changed();
+        id = response.detail[1]
+        response = response.detail[0]
+        if (id == 1) {
+            bg.transition().duration(500).style('opacity', 0)
+            figure1.transition().duration(2000).style('opacity', 1)
+        } else {
+            bg.transition().duration(500).style('opacity', 1)
+            figure1.transition().duration(500).style('opacity', 0)
+        }
     }
     addEventListener("step-enter", handleStepEnter1);
     function handleStepExit1(response) {
-        response = response.detail
-        if (response.index > anim_step) { return }
-        if (response.direction == "up") {
-            anim_step = response.index;
+        id = response.detail[1]
+        response = response.detail[0]
+        if (response.direction == "up" &&
+            response.index == 0) {
+            bg.transition().duration(500).style('opacity', 1)
+            figure1.transition().duration(500).style('opacity', 0)
         }
-        step_changed();
     }
     addEventListener("step-exit", handleStepExit1);
+
     function handleStepEnter2(response) {
         step2.classed("is-active", function (d, i) {
             return i === response.index;
         });
         figure2.select("p").text(response.index + 1);
+    }
+    function handleStepExit2(response) {
+
     }
 
     function init() {
@@ -66,40 +77,43 @@ addEventListener("load", () => {
             .onStepEnter((r) => {
                 dispatchEvent(
                     new CustomEvent("step-enter", {
-                        detail: r
+                        detail: [r, 1]
                     })
                 )
             })
             .onStepExit((r) => {
                 dispatchEvent(
                     new CustomEvent("step-exit", {
-                        detail: r
+                        detail: [r, 1]
                     })
                 )
             });
         scroller2
             .setup({
                 step: "#scrolly-side article .step",
-                offset: 0.33,
+                offset: 0.9,
                 debug: false
             })
-            .onStepEnter(handleStepEnter2);
+            .onStepEnter((r) => {
+                dispatchEvent(
+                    new CustomEvent("step-enter", {
+                        detail: [r, 2]
+                    })
+                )
+            })
+            .onStepExit((r) => {
+                dispatchEvent(
+                    new CustomEvent("step-exit", {
+                        detail: [r, 2]
+                    })
+                )
+            });
     }
     init();
     addEventListener("scroll", () => {
         bg_y_dest = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * -50 + 25;
     })
     addEventListener("resize", handleResize);
-    function step_changed() {
-        if (anim_step > 0) {
-            bg.transition().duration(500).style('opacity', 0)
-            figure1.transition().duration(2000).style('opacity', 1)
-        } else {
-            bg.transition().duration(500).style('opacity', 1)
-            figure1.transition().duration(500).style('opacity', 0)
-        }
-        figure1.select("p").text(anim_step)
-    }
     function update() {
         bg_y = bg_y + (bg_y_dest - bg_y) / 10
         bg.style("top", bg_y + "vh")
